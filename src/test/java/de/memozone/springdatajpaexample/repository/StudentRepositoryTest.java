@@ -18,9 +18,9 @@ class StudentRepositoryTest {
     private StudentRepository studentRepository;
 
     @Test
-    public void saveStudent(){
+    public void saveStudent() {
 
-        Student student=Student.builder().emailId("memo@web.de")
+        Student student = Student.builder().emailId("memo@web.de")
                 .firstName("mehmet")
                 .lastName("memoli")
                 .build();
@@ -29,15 +29,15 @@ class StudentRepositoryTest {
     }
 
     @Test
-    public void saveStudentWithGuardianDetails(){
+    public void saveStudentWithGuardianDetails() {
 
-        Guardian guardian= Guardian.builder()
+        Guardian guardian = Guardian.builder()
                 .email("esponda@gmail.com")
                 .name("Esponda Gabriella")
                 .mobile("0176241723")
                 .build();
 
-        Student student=Student.builder()
+        Student student = Student.builder()
                 .firstName("Mehmet")
                 .lastName("memoli")
                 .emailId("memo2@web.de")
@@ -49,11 +49,43 @@ class StudentRepositoryTest {
     }
 
 
-@Test
-    public void getAllStudent(){
+    @Test
+    public void getAllStudent() {
 
-    List<Student> studentList=studentRepository.findAll();
-    System.out.println("StudentList = " +studentList);
-}
+        List<Student> studentList = studentRepository.findAll();
+        System.out.println("StudentList = " + studentList);
+    }
+
+
+    @Test
+    public void printStudentByFirstName() {
+
+        List<Student> students = studentRepository.findByFirstName("Mehmet");
+        System.out.println("students = " + students);
+
+    }
+
+    @Test
+    public void printStudentByFirstNameContainingString() {
+
+        List<Student> students = studentRepository.findByFirstNameContaining("ehmet");
+        System.out.println("students = " + students);
+    }
+
+    @Test
+    public void printStudentBasedOnLastNameNotNull() {
+
+        List<Student> students=studentRepository.findByLastNameNotNull();
+        System.out.println("students =" +students);
+
+    }
+
+    @Test
+    public void printStudentBasedOnGuardianName(){
+
+        List<Student> students=studentRepository.findByGuardianName("Esponda");
+        System.out.println("students = "+students);
+    }
+
 
 }
