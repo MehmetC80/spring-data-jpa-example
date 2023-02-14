@@ -1,0 +1,59 @@
+package de.memozone.springdatajpaexample.repository;
+
+import de.memozone.springdatajpaexample.entity.Guardian;
+import de.memozone.springdatajpaexample.entity.Student;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+
+@SpringBootTest
+class StudentRepositoryTest {
+
+    @Autowired
+    private StudentRepository studentRepository;
+
+    @Test
+    public void saveStudent(){
+
+        Student student=Student.builder().emailId("memo@web.de")
+                .firstName("mehmet")
+                .lastName("memoli")
+                .build();
+
+        studentRepository.save(student);
+    }
+
+    @Test
+    public void saveStudentWithGuardianDetails(){
+
+        Guardian guardian= Guardian.builder()
+                .email("esponda@gmail.com")
+                .name("Esponda Gabriella")
+                .mobile("0176241723")
+                .build();
+
+        Student student=Student.builder()
+                .firstName("Mehmet")
+                .lastName("memoli")
+                .emailId("memo2@web.de")
+                .guardian(guardian)
+                .build();
+
+        studentRepository.save(student);
+
+    }
+
+
+@Test
+    public void getAllStudent(){
+
+    List<Student> studentList=studentRepository.findAll();
+    System.out.println("StudentList = " +studentList);
+}
+
+}
