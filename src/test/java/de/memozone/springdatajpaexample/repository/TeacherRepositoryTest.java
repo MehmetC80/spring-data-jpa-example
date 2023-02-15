@@ -32,7 +32,7 @@ class TeacherRepositoryTest {
                 .firstName("Jochen")
                 .lastName("Schiller")
                 .emailId("schiller@gmail.com")
-                .courses(List.of(course01, course02))
+               // .courses(List.of(course01, course02))
                 .build();
 
         teacherRepository.save(teacher);

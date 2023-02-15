@@ -20,13 +20,13 @@ class CourseMaterialRepositoryTest {
     public void saveCourseMaterial() {
 
         Course course = Course.builder()
-                .title("Grundlagen der theoretischen Informatik")
+                .title("Datenbanksysteme")
                 .credit(6)
                 .build();
 
         CourseMaterial courseMaterial = CourseMaterial
                 .builder()
-                .url("www.google.de")
+                .url("www.memozone.de")
                 .course(course)
                 .build();
 
