@@ -1,10 +1,10 @@
 package de.memozone.springdatajpaexample.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+import org.springframework.data.crossstore.ChangeSetPersister;
 
 @Entity
 @Data
@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString(exclude = "course")
 public class CourseMaterial {
 
     @Id
@@ -28,10 +29,16 @@ public class CourseMaterial {
 
     private String url;
 
-    @OneToOne
+    @OneToOne(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+
+
+    )
     @JoinColumn(
             name = "course_id",
             referencedColumnName = "courseId"
     )
+    @NotFound(action = NotFoundAction.IGNORE)
     private Course course;
 }
