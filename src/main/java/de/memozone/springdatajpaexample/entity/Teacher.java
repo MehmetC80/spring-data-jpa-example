@@ -14,10 +14,11 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Table(
-        uniqueConstraints = @UniqueConstraint(
-                name = "emailid_unique",
-                columnNames = "email_address"
-        ))
+//        uniqueConstraints = @UniqueConstraint(
+//                name = "emailid_unique",
+//                columnNames = "email_address"
+//        )
+)
 public class Teacher {
 
     @Id
