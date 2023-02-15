@@ -1,6 +1,8 @@
 package de.memozone.springdatajpaexample.repository;
 
 import de.memozone.springdatajpaexample.entity.Course;
+import de.memozone.springdatajpaexample.entity.CourseMaterial;
+import de.memozone.springdatajpaexample.entity.Student;
 import de.memozone.springdatajpaexample.entity.Teacher;
 
 import org.junit.jupiter.api.Test;
@@ -100,9 +102,35 @@ class CourseRepositoryTest {
                 .findByTitleContaining("Rechner", firstPageTenRecords)
                 .getContent();
 
-        System.out.println("courses = "+courses);
+        System.out.println("courses = " + courses);
+
+    }
+
+    @Test
+    public void saveCourseWithStudentAndTeacher() {
+
+        Teacher teacher = Teacher.builder()
+                .firstName("Klaus")
+                .lastName("Kriegel")
+                .emailId("kriegel@inf.fu-berlin.de")
+                .build();
+
+        Student student = Student.builder()
+                .firstName("Abuzer")
+                .lastName("Firat")
+                .emailId("firat@web.de")
+                .build();
 
 
+        Course course = Course.builder()
+                .title("Mathe für Informatiker")
+                .credit(8)
+                .teacher(teacher)
+                .build();
+
+        course.addStudents(student);
+
+        courseRepository.save(course);
     }
 
 
