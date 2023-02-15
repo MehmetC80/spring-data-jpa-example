@@ -48,13 +48,13 @@ class StudentRepositoryTest {
 
     }
 
-
     @Test
     public void getAllStudent() {
 
         List<Student> studentList = studentRepository.findAll();
         System.out.println("StudentList = " + studentList);
     }
+
 
 
     @Test
