@@ -103,4 +103,24 @@ class StudentRepositoryTest {
     }
 
 
+    @Test
+    public void printGetStudentByEmailAddressNative(){
+        Student student=studentRepository.getStudentByEmailAddressNative("memo@web.de");
+        System.out.println("Students = "+student);
+    }
+
+
+    @Test
+    public void printGetStudentByEmailAddressNativeNamedParam(){
+        Student student=studentRepository.getStudentByEmailAddressNativeNamedParam("memo@web.de");
+        System.out.println("Students = "+student);
+    }
+
+
+    @Test
+    public void updateStudentNameByEmailIdTest(){
+        studentRepository.updateStudentNameByEmailId("Memoli","memo@web.de");
+    }
+
+
 }
